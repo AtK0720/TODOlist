@@ -58,7 +58,7 @@
     unset($user_name, $user_pass);
   
   } catch (Exception $e) {
-    print 'サーバーがおかしい';
+    print 'サーバーがおかしいaaaaaa';
   }
 
 
