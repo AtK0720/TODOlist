@@ -71,7 +71,7 @@ elseif($user_name==''||$user_pass==''||$user_pass!==$user_pass2){
   print '</form>';
   }else
   {
-      $user_pass=md5($user_pass);
+      $user_pass=password_hash($user_pass,PASSWORD_DEFAULT);
       print '<form action="user_add_done.php" method="post">';
       print '<input type="hidden" name="name" value="'.$user_name.'">';
       print '<input type="hidden" name="pass" value="'.$user_pass.'">';

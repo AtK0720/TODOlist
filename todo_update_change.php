@@ -10,6 +10,7 @@ if (isset($post) == true) {
   $year = $post['yyyy']; //年//
   $month = $post['mm']; //月
   $day = $post['dd'];
+  $todoID=$post['ID222'];
 }
 
 //日付の合成
@@ -34,18 +35,16 @@ else{
 try {
   $dbh = db_connect();
 
-  $sql = 'INSERT INTO todo_item(NAME,USER,EXPIRE_DATE,FINISHED_DATE) VALUES(?,?,?,?)';
+  $sql = 'UPDATE todo_item SET NAME=?,USER=?,EXPIRE_DATE=?,FINISHED_DATE=? WHERE ID=?';
   $stmt = $dbh->prepare($sql);
-
-
 
   //データを放り込む
   $stmt->bindValue(1, $name, PDO::PARAM_STR);
   $stmt->bindValue(2, $user, PDO::PARAM_STR);
   $stmt->bindValue(3, $expire_date, PDO::PARAM_STR);
   $stmt->bindValue(4, "0000-00-00", PDO::PARAM_STR);
+  $stmt->bindValue(5,$todoID,PDO::PARAM_STR);
   $stmt->execute();
-
   $dbh = null;
 
   unset($name, $user, $expire_date);
