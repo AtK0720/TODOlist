@@ -38,7 +38,8 @@
 
     //ユーザーIDの取得
 
-    $sql = "SELECT ID,NAME FROM todo_user WHERE NAME='$user_name'";
+    $sql = "SELECT ID,NAME FROM todo_user WHERE NAME=?";
+    $stmt->execute([$post['name']]);
     $res = $dbh->prepare($sql);
     $res->execute();
 
@@ -58,7 +59,7 @@
     unset($user_name, $user_pass);
   
   } catch (Exception $e) {
-    print 'サーバーがおかしいaaaaaa';
+    print 'サーバーがおかしい';
   }
 
 
